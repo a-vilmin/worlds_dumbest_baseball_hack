@@ -2,7 +2,6 @@ import json
 import lxml
 import re
 from bs4 import BeautifulSoup
-from collections import OrderedDict
 from urllib.request import urlopen
 
 STAT_COUNT = 14
@@ -78,5 +77,5 @@ for player in players:
 def obj_dict(obj):
     return obj.__dict__
 
-with open("monthly_batters.json", "w") as outputfile:
+with open("season_batters_data.json", "w") as outputfile:
     json.dump(players, outputfile, default=obj_dict)

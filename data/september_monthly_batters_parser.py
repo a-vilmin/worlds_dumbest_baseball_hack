@@ -2,7 +2,6 @@ import json
 import lxml
 import re
 from bs4 import BeautifulSoup
-from collections import OrderedDict
 from urllib.request import urlopen
 
 STAT_COUNT = 14
