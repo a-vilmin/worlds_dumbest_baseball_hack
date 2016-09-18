@@ -57,7 +57,7 @@ players = [
 
 for player in players:
 
-    month_url = "http://www.brooksbaseball.net/h_tabs.php?player={}&balls=-1&strikes=-1&b_hand=-1&time=month&minmax=ci&var=ra&s_type=16&gFilt=allmlb&startDate=01/01/2015&endDate=01/01/2016".format(player["id"])
+    month_url = "http://www.brooksbaseball.net/h_tabs.php?player={}&balls=-1&strikes=-1&b_hand=-1&time=month&minmax=ci&var=ra&s_type=16&gFilt=allmlb&startDate=09/01/2015&endDate=10/01/2015".format(player["id"])
 
     data = urlopen(month_url)
     soup = BeautifulSoup(data, "lxml")
@@ -78,5 +78,5 @@ for player in players:
 def obj_dict(obj):
     return obj.__dict__
 
-with open("monthly_batters.json", "w") as outputfile:
+with open("september_monthly_batters.json", "w") as outputfile:
     json.dump(players, outputfile, default=obj_dict)
