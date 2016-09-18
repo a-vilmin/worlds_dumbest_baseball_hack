@@ -57,7 +57,7 @@ players = [
 
 for player in players:
 
-    season_url = "http://www.brooksbaseball.net/h_tabs.php?player={}&balls=-1&strikes=-1&b_hand=-1&time=month&minmax=ci&var=ra&s_type=16&gFilt=allmlb&startDate=01/01/2015&endDate=01/01/2016".format(player["id"])
+    month_url = "http://www.brooksbaseball.net/h_tabs.php?player={}&balls=-1&strikes=-1&b_hand=-1&time=month&minmax=ci&var=ra&s_type=16&gFilt=allmlb&startDate=01/01/2015&endDate=01/01/2016".format(player["id"])
 
     data = urlopen(month_url)
     soup = BeautifulSoup(data, "lxml")
