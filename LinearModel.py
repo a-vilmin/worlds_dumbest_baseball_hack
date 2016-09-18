@@ -2,7 +2,7 @@ import StatMaker
 from sys import argv
 import numpy as np
 from sknn.mlp import Regressor, Layer
-
+import itertools
 
 COLUMNS = ["Sinker", "Split", "Curve", "Change", "Slider", "Cutter",
            "Fourseam"]
@@ -15,11 +15,14 @@ def main():
 
     x = []
     y = []
-    x_ = stats.opp_pitch.flatten()
+    x_ = []
 
     for p in COLUMNS:
         x += [player.pitch_freq[p]]
         y += [player.tb_aves[p]]
+        x_ += [stats.opp_pitch[p]]
+
+    x_ = list(itertools.chain(*x_))
 
     x_ = np.array([x_])
     x = np.array([x])
@@ -32,6 +35,11 @@ def main():
         n_iter=100)
     nn.fit(x, y)
 
-    nn.predict(x_)
+    y_example = nn.predict(x_)
+
+    i = 0
+    for each in y_example:
+        print(COLUMNS[i] + " is:"+ str(each))
+        i += 1
 if __name__ == '__main__':
     main()

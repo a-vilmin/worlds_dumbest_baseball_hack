@@ -49,10 +49,10 @@ class StatMaker():
     def create_x_test(self, json_opp_pitch):
         for each in json_opp_pitch:
             for p in each["pitches"]:
-                self.opp_pitch[p[0]] += [float(p[2])]
+                self.opp_pitch[p[0]] += [float(p[1])]
 
         for key, value in self.opp_pitch.items():
-            value = [sum(value) / float(len(value))]
+            self.opp_pitch[key] = [sum(value) / float(len(value)) / 20.0]
 
 if __name__ == '__main__':
     from sys import argv
@@ -65,3 +65,4 @@ if __name__ == '__main__':
             print(key + " tb_ave is:" + str(value))
         for key, value in pitches.pitch_freq.items():
             print(key + " pitch_freqx is:" + str(value))
+
